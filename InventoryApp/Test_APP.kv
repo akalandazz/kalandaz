@@ -1,0 +1,55 @@
+#:import get_color_from_hex kivy.utils.get_color_from_hex
+<Controller>
+	canvas:
+        Rectangle:
+            source: "Backgrund.png"
+            size: self.size
+            pos: self.pos
+			
+			
+<Show_screen>:
+    canvas:
+        Rectangle:
+            source: "background1.png"
+            size: self.size
+            pos : self.pos
+
+<monacemebi>:
+    canvas:
+        Line:
+            rectangle:(self.x, self.y,self.width, self.height)
+            joint: 'round'
+            width:3
+        Color:
+            rgb: get_color_from_hex('#2e2929')
+        Rectangle:
+            size: self.size
+            pos : self.pos
+
+<Pirovneba_box1>:
+    canvas:
+        Line:
+            rectangle:(self.x, self.y,self.width, self.height)
+            joint: 'round'
+            width:3
+        Color:
+            rgb: get_color_from_hex('#2e2929')
+        Rectangle:
+            size: self.size
+            pos : self.pos
+            
+<sataurebi_layout>:
+    canvas:
+        Line:
+            rectangle:(self.x, self.y,self.width, self.height)
+            joint: 'round'
+            width:3
+        Color:
+            rgb: get_color_from_hex('#2e2929')
+        Rectangle:
+            size: self.size
+            pos : self.pos
+
+
+
+
