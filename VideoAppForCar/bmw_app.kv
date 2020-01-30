@@ -1,0 +1,193 @@
+#:import get_color_from_hex kivy.utils.get_color_from_hex
+#:import Window kivy.core.window.Window
+#:import escape_markup kivy.utils.escape_markup
+#:import Animation kivy.animation.Animation
+#:import NavigationLayout kivymd.uix.navigationdrawer.NavigationLayout
+#:import ShadowButton ShadowButtonClass.ShadowButton
+<ContentNavigationDrawer@MDNavigationDrawer>
+    drawer_logo: "D:/all my files/me/CiufZ8ZA_pw.jpg"
+    NavigationDrawerSubheader:
+        text: "Menu:"
+
+<animated_lay>:
+	size_hint : None,None
+	Label:
+		canvas.before:
+			Ellipse:
+				source:'D:/DW/63267.jpg'
+				size:self.size
+				pos:self.pos
+			Line:
+				circle:self.x+(self.width/2), self.y+(self.height/2), self.height/2
+				width:5
+
+                
+
+
+
+<info_layer>:
+    NavigationLayout:
+        id: nav_layout
+        ContentNavigationDrawer:
+            id: nav_drawer
+            NavigationDrawerIconButton:
+                text:'Home'
+                icon:'phone'
+                on_press:
+                    menu_screen.manager.current = 'Menu'
+            NavigationDrawerIconButton:
+                text:'Settings'
+                icon:'settings'
+
+        BoxLayout:
+            spacing:10
+            orientation:'vertical'
+            MDToolbar:
+                spacing:10
+                id: toolbar
+                title: "CarAuidoSystem"
+                md_bg_color: app.theme_cls.primary_color
+                background_palette: "Primary"
+                background_hue: "500"
+                elevation: 10
+                left_action_items:
+                    [["menu", lambda x: nav_layout.toggle_nav_drawer()]]
+                MDFloatingActionButton:
+                    icon: "plus"
+                    opposite_colors: True
+                    elevation_normal: 2
+                MDFloatingActionButton:
+                    icon: "plus"
+                    elevation_normal: 8
+                MDFloatingActionButton:
+                    icon: "plus"
+                    elevation_normal: 8
+            ScreenManager:
+                id:screens
+                Screen:
+                    id:menu_screen
+                    name: "Menu"
+                    GridLayout:
+                        cols:2
+                        rows:3
+                        spacing:50
+                        padding:50
+                        orientation:'vertical'
+                        Label:
+                            text:'Time'
+                        Label:
+                            text:'radio'
+
+                        ShadowButton:
+                            id:mus_gilaki
+                            text:'Music'
+                            font_size:30
+                            elevation: 4
+                            color:get_color_from_hex('#fff700') if self.collide_point(*Window.mouse_pos) else get_color_from_hex('#FFBAC0')
+                            on_touch_up: if self.collide_point(*Window.mouse_pos):root.machvene_vinvar(self)
+                        
+                         
+
+                        ShadowButton:
+                            id:mus_gilaki
+                            text:'Video'
+                            font_size:30
+                            elevation: 4
+                            on_touch_up: if self.collide_point(*Window.mouse_pos):root.machvene_vinvar(self)
+                            color:get_color_from_hex('#fff700') if self.collide_point(*Window.mouse_pos) else get_color_from_hex('#FFBAC0')
+
+                        ShadowButton:
+                            id:mus_gilaki
+                            text:'Images'
+                            font_size:30
+                            elevation: 4
+                            on_touch_up: if self.collide_point(*Window.mouse_pos):root.machvene_vinvar(self)
+                            color:get_color_from_hex('#fff700') if self.collide_point(*Window.mouse_pos) else get_color_from_hex('#FFBAC0')
+                           
+                        ShadowButton:
+                            id:mus_gilaki
+                            text:'FM-Radio'
+                            font_size:30
+                            elevation: 4
+                            on_touch_up: if self.collide_point(*Window.mouse_pos):root.machvene_vinvar(self)
+                            size_hint_y:.65
+                            color:get_color_from_hex('#fff700') if self.collide_point(*Window.mouse_pos) else get_color_from_hex('#FFBAC0')
+                           
+                
+                        
+                        
+                Screen:
+                    id: mus_screen
+                    name:"Music"
+                    TabbedPanel:
+                        do_default_tab: False
+                        tab_pos:'top_mid'
+                        tab_width:self.width/2
+                        TabbedPanelItem:
+                            id:plrscrn
+                            text:'Player'
+                            MusicPlayerLayout:
+                                id:plrlay
+                                    
+                        TabbedPanelItem:
+                            id:list
+                            text:'Library'
+                            ScrollView:
+                                id:scrl
+                                do_scroll_y: True
+                                BoxLayout:
+                                    id:scrlbox
+                                    size_hint_y:None
+                                    height:self.minimum_height
+                                    orientation:'vertical'
+                        
+            
+
+                Screen:
+                    id: vid_screen
+                    name:"Video"
+
+                Screen:
+                    id: img_screen
+                    name:"Images"
+                    BoxLayout:
+                        canvas.after:
+                            Line:
+                                rounded_rectangle:(self.x, self.y, self.width, self.height, 10, 10, 10, 10, 100)
+                                width: 3
+                        Button:
+                            size_hint:.20,.20
+                            pos_hint:{'x':.0,'y':.50}
+                            text:"previous"
+                            on_release: root.ids.karuseli.load_previous()
+
+                        Carousel:
+                            id:karuseli
+
+                        Button:
+                            size_hint:.20,.20
+                            pos_hint:{'x':.0,'y':.50}
+                            text:'next'
+                            on_release: root.ids.karuseli.load_next()
+
+                Screen:
+                    id: fm_screen
+                    name:"FM-Radio"
+                    BoxLayout:
+                        orientation : "vertical"
+                        Label:
+                            text: 'Some very long line which will be cut'
+                            markup: True
+                            shorten: True
+                            ellipsis_options: {'color':get_color_from_hex('#F00B00'),'underline':True}
+                        Label:
+                            text: "mus1"
+                        Label:
+                            text: "mus1"
+                
+
+
+	
+		
+
+		
